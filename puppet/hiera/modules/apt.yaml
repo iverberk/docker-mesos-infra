@@ -1,0 +1,5 @@
+---
+apt::always_apt_update: true
+apt::apt_update_frequency: always
+apt::update_timeout: 600
+apt::update_tries: 2

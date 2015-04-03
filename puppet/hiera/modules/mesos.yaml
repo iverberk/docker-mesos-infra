@@ -1,5 +1,4 @@
 ---
-
 mesos::slave::checkpoint: true
 mesos::slave::master: 192.168.33.11
 mesos::master::options:

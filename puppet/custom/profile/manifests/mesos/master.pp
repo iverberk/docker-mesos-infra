@@ -14,7 +14,5 @@ class profile::mesos::master {
     },
     require => Class['profile::zookeeper'],
   }
-
-  Class['apt::update'] -> Package['java']
   
 }

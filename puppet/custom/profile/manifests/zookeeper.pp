@@ -7,4 +7,6 @@ class profile::zookeeper {
     require => Class['java'],
   }
 
+  Class['apt'] -> Package<| |>
+
 }

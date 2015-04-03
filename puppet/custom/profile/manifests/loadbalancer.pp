@@ -4,4 +4,6 @@ class profile::loadbalancer {
   include ::loadbalancer
   include ::keepalived
 
+  Class['apt'] -> Package<| |>
+
 }

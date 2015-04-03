@@ -7,5 +7,7 @@ class profile::mesos::base {
   class { '::mesos':
     repo => 'mesosphere',
   }
+
+  Class['apt'] -> Package<| |>
   
 }
