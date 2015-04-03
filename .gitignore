@@ -1,5 +1,4 @@
 .vagrant/
-scripts/
 gogs/
 jenkins/
 xebia.sublime-project
