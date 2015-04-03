@@ -1,0 +1,10 @@
+---
+:backends:
+  - yaml
+
+:yaml:
+  :datadir: /vagrant/puppet/hiera
+
+:hierarchy:
+  - nodes/%{::clientcert}
+  - modules/%{module_name}

@@ -1,0 +1,7 @@
+---
+consul::service::cmd: -advertise 192.168.33.16 -join 192.168.33.11
+mesos::slave::listen_address: 192.168.33.16
+mesos::slave::options:
+  hostname: ms3.localdomain
+mesos::slave::attributes:
+  environment: production

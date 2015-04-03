@@ -1,0 +1,38 @@
+{
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "192.168.33.19:5000/app:latest",
+      "network": "BRIDGE",
+      "portMappings": [
+        { "containerPort": 8000, "hostPort": 0, "servicePort": 0, "protocol": "tcp" }
+      ],
+      "parameters": [
+        { "key": "env", "value": "SERVICE_NAME=app" },
+        { "key": "env", "value": "SERVICE_TAGS=production" },
+        { "key": "env", "value": "APP_ENV=production" },
+        { "key": "env", "value": "SERVICE_80_CHECK_HTTP=/signin" },
+        { "key": "env", "value": "SERVICE_80_CHECK_INTERVAL=15s" },
+        { "key": "cap-drop", "value": "ALL" }
+      ]
+    },
+    "volumes": [
+      {
+        "containerPath": "/data/app/storage/sessions",
+        "hostPath": "/data/sessions",
+        "mode": "RW"
+      },
+      {
+        "containerPath": "/data/db",
+        "hostPath": "/data/db",
+        "mode": "RW"
+      }
+    ]
+  },
+  "id": "/app-production",
+  "instances": 3,
+  "cpus": 0.1,
+  "mem": 64,
+  "uris": [],
+  "constraints": [["environment", "CLUSTER", "production"]]
+}

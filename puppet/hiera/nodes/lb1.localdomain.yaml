@@ -1,0 +1,14 @@
+---
+
+loadbalancer::config::keepalived_instances:
+  VI_1:
+    interface: eth1
+    state: MASTER
+    virtual_router_id: 50
+    priority: 101
+    auth_type: PASS
+    auth_pass: secret
+    virtual_ipaddress: ['192.168.33.20']
+    track_script: chk_haproxy
+    unicast_source_ip: "%{::ipaddress_eth1}"
+    unicast_peers: ['192.168.33.18']

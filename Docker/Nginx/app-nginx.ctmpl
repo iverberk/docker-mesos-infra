@@ -1,0 +1,39 @@
+upstream app-test {
+  least_conn;
+  {{range service "test.app"}}server {{.Address}}:{{.Port}} max_fails=3 fail_timeout=60 weight=1;
+  {{else}}server 127.0.0.1:65535; # force a 502{{end}}
+}
+
+upstream app-production {
+  least_conn;
+  {{range service "production.app"}}server {{.Address}}:{{.Port}} max_fails=3 fail_timeout=60 weight=1;
+  {{else}}server 127.0.0.1:65535; # force a 502{{end}}
+}
+
+server {
+  listen 8080;
+
+  location / {
+    proxy_redirect http://app-test:8080/ http://app-test/;
+    proxy_pass http://app-test;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+  }
+
+  server_name app-test;
+}
+
+server {
+  listen 8080;
+
+  location / {
+    proxy_redirect http://app-production:8080/ http://app-production/;
+    proxy_pass http://app-production;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+  }
+
+  server_name app-production;
+}

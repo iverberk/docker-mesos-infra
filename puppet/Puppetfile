@@ -1,0 +1,13 @@
+forge "https://forgeapi.puppetlabs.com"
+
+mod "puppetlabs/stdlib", "4.5.1"
+mod "puppetlabs/java", "1.3.0"
+mod "puppetlabs/apt", "1.7.0"
+mod "puppetlabs/concat", "1.2.0"
+mod "stahnma/epel", "1.0.2"
+mod "richardc/datacat", "0.6.1"
+mod "deric/mesos", "0.5.3"
+mod "deric/zookeeper", "0.3.5"
+mod "garethr/docker", "3.3.2"
+mod "arioch/keepalived", "1.1.1"
+mod "echocat/nfs", "1.3.0"

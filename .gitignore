@@ -1,0 +1,6 @@
+.vagrant/
+scripts/
+gogs/
+jenkins/
+xebia.sublime-project
+xebia.sublime-workspace

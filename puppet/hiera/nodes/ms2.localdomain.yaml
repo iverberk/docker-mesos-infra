@@ -1,0 +1,7 @@
+---
+consul::service::cmd: -advertise 192.168.33.15 -join 192.168.33.11
+mesos::slave::listen_address: 192.168.33.15
+mesos::slave::options:
+  hostname: ms2.localdomain
+mesos::slave::attributes:
+  environment: test

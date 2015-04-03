@@ -1,0 +1,12 @@
+---
+consul::service::cmd: -server -advertise 192.168.33.11 -bootstrap-expect 3
+mesos::master::listen_address: 192.168.33.11
+mesos::master::options: { quorum: "2", hostname: "mm1.localdomain" }
+zookeeper::id: 1
+zookeeper::servers:
+zookeeper::client_ip: 192.168.33.11
+zookeeper::datastore: /var/lib/zookeeper
+zookeeper::servers:
+  - 192.168.33.11:2888:3888
+  - 192.168.33.12:2888:3888
+  - 192.168.33.13:2888:3888
