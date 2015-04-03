@@ -1,0 +1,7 @@
+---
+
+mesos::slave::checkpoint: true
+mesos::slave::master: 192.168.33.11
+mesos::master::options:
+  quorum: '2'
+mesos::zookeeper: 'zk://192.168.33.11:2181,192.168.33.12:2181,192.168.33.13:2181/mesos'

@@ -1,0 +1,39 @@
+{
+  "name": "torrancew-cron",
+  "version": "0.1.0",
+  "source": "https://github.com/torrancew/puppet-cron",
+  "author": "torrancew",
+  "license": "Apache License, Version 2.0",
+  "summary": "A module to manage cron jobs via /etc/cron.d",
+  "description": "A module to manage cron.d cron jobs (as well as environment settings for these jobs, and common helpers such as cron::daily)",
+  "project_page": "https://github.com/torrancew/puppet-cron",
+  "dependencies": [
+
+  ],
+  "types": [
+
+  ],
+  "checksums": {
+    "CHANGELOG": "d9ab5631e4e18579f22bd953e5394181",
+    "LICENSE": "d6287719356a0aec3e10a39d52040908",
+    "Modulefile": "e1b3074d405d4a11a42c485f4fe4c41c",
+    "README.mkd": "5ca5adbb8295bf3d1783afe66d167e29",
+    "Rakefile": "baf47607779e5dce1c5285d77b0afd6d",
+    "manifests/daily.pp": "85f6eb4d8888ec1b7677221fad1741ae",
+    "manifests/hourly.pp": "3a216ad521aa0ac1f182f514f90f6451",
+    "manifests/init.pp": "418bd97557073d61d99d9322fb3e5986",
+    "manifests/install.pp": "3796d2b03a4a3e2290a40cd106460930",
+    "manifests/job.pp": "92db97b901fd6e6bd661451513a9d2be",
+    "manifests/monthly.pp": "981ad38283f37adaa258c368d040de65",
+    "manifests/weekly.pp": "6c181d375dd13c5adfd0646d7718e773",
+    "spec/classes/cron_spec.rb": "01ba38f11cfda64fb2d88ba63446c228",
+    "spec/classes/install_spec.rb": "6f24f546d30a5f27198c95b9aaaf5500",
+    "spec/defines/daily_spec.rb": "e7431ebeb3edc843ea21e58b1e59ed91",
+    "spec/defines/hourly_spec.rb": "ae89af4ccb95719bb254a4b6b5f91098",
+    "spec/defines/job_spec.rb": "61e32a4f55fd9b556b33d49e9078acaa",
+    "spec/defines/monthly_spec.rb": "a420de4e0f237ac48af1a3000db40507",
+    "spec/defines/weekly_spec.rb": "78c5437e8d011407f474998329ef884e",
+    "spec/spec_helper.rb": "83b1ffae3dad04751548d11ab7659e4b",
+    "templates/job.erb": "87886fe5a9e9d250e548e2dbf4faed45"
+  }
+}

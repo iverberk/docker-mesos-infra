@@ -1,0 +1,124 @@
+{
+  "name": "richardc-datacat",
+  "version": "0.4.3",
+  "source": "git://github.com/richardc/puppet-datacat.git",
+  "author": "richardc",
+  "license": "Apache 2.0",
+  "summary": "Puppet type for handling data fragments",
+  "description": "A pair of types for handling data fragments and templating",
+  "project_page": "https://github.com/richardc/puppet-datacat",
+  "dependencies": [
+
+  ],
+  "types": [
+    {
+      "name": "datacat_collector",
+      "doc": "Manages the merging of data and updating a related resource parameter.\n\nThe `datacat_collector` type deeply merges a data hash from\nthe `datacat_fragment` resources that target it.\n\nThese fragments are then rendered via an erb template specified by the\n`template_body` parameter and used to update the `target_field` property\nof the related `target_resource`.\n\nSample usage:\n\n  datacat_collector { 'open_ports':\n    template_body => '<%= @data[\"ports\"].sort.join(\",\") %>',\n    target_resource => File_line['open_ports'],\n    target_field    => 'line',\n  }\n\n  datacat_fragment { 'open webserver':\n    target => 'open_ports',\n    data   => { ports => [ 80, 443 ] },\n  }\n\n  datacat_fragment { 'open ssh':\n    target => 'open_ports',\n    data   => { ports => [ 22 ] },\n  }\n\n\nFor convenience the common use case of targeting a file is wrapped in the\ndatacat defined type.",
+      "properties": [
+        {
+          "name": "ensure",
+          "doc": "The basic property that the resource should be in.\n\nValid values are `present`, `absent`. "
+        }
+      ],
+      "parameters": [
+        {
+          "name": "path",
+          "doc": "An identifier (typically a file path) that can be used by datacat_fragments so they know where to target the data.\n\n"
+        },
+        {
+          "name": "collects",
+          "doc": "Other resources we want to collect data from.  Allows for many-many datacats.\n\n"
+        },
+        {
+          "name": "target_resource",
+          "doc": "The resource that we're going to set the field (eg File['/tmp/demo']) set theto set data tor\n\n"
+        },
+        {
+          "name": "target_field",
+          "doc": "The field of the resource to put the results in\n\n"
+        },
+        {
+          "name": "source_key",
+          "doc": "If specified, the key from @data to copy across to the target_field (bypasses template evaluation)\n\n"
+        },
+        {
+          "name": "template",
+          "doc": "Path to the template to render.  Used in error reporting.\n\n"
+        },
+        {
+          "name": "template_body",
+          "doc": "The slurped body of the template to render.\n\n"
+        }
+      ],
+      "providers": [
+        {
+          "name": "datacat_collector",
+          "doc": ""
+        }
+      ]
+    },
+    {
+      "name": "datacat_fragment",
+      "doc": "A fragment of data for a datacat resource.",
+      "properties": [
+
+      ],
+      "parameters": [
+        {
+          "name": "name",
+          "doc": "The name of this fragment.\n\n"
+        },
+        {
+          "name": "target",
+          "doc": "The title of the datacat resource that the data should be considered part of.  May be an array to indicate multiple targetted collectors.\n\n"
+        },
+        {
+          "name": "order",
+          "doc": "The order in which to merge this fragment into the datacat resource.  Defaults to the string \"50\"\n\n"
+        },
+        {
+          "name": "data",
+          "doc": "A hash of data to be merged for this resource.\n\n"
+        }
+      ],
+      "providers": [
+        {
+          "name": "datacat_fragment",
+          "doc": ""
+        }
+      ]
+    }
+  ],
+  "checksums": {
+    "Changes": "69098fa6689a21f84566f39b0a95ee69",
+    "Gemfile": "ef832aa81eac5835c29f9cd738b4e8e6",
+    "Modulefile": "124cc35471211240736b8f49f644fe34",
+    "NOTES.md": "6f1c193c69da469ad266897eb1229982",
+    "README.md": "1c501d429aed87dd917a098cddb98139",
+    "Rakefile": "790f004b3a18453229b93c23935a4681",
+    "TODO.md": "05bafe2e4d2e1f01bac2c63722e835df",
+    "lib/puppet/parser/functions/template_body.rb": "402668584c44ede24c78859f6088b148",
+    "lib/puppet/provider/datacat_collector/datacat_collector.rb": "6924b9d5a8acab2b07e6a7e9c2107e4a",
+    "lib/puppet/provider/datacat_fragment/datacat_fragment.rb": "785579d50687391eb3a7f12ca396eec3",
+    "lib/puppet/type/datacat_collector.rb": "b08eb6bd3a5096b1fa58d7b88edcb59b",
+    "lib/puppet/type/datacat_fragment.rb": "75f2ee264dcdca35630cc183a594dc8b",
+    "lib/puppet_x/richardc/datacat.rb": "9d577821d01c82e6cbf544cab6650742",
+    "manifests/init.pp": "4cee64183e1fa0e0e143f59d9f73610a",
+    "spec/classes/demo1_spec.rb": "86c043c0769b04015e21655339fafef5",
+    "spec/defines/datacat_spec.rb": "3bf09940aa06850a50c551c62e1b6aa8",
+    "spec/fixtures/modules/demo1/manifests/init.pp": "4afa5d2233c0f2c676b6eab8b993e3aa",
+    "spec/fixtures/modules/demo1/templates/sheeps.erb": "31a9e6dc4566ab5277dd36330e9eab30",
+    "spec/fixtures/modules/demo2/manifests/init.pp": "7060abe9b0df5561ca31751c8ad774c8",
+    "spec/fixtures/modules/demo2/templates/merging.erb": "7ed80a01e3df2bfd98d996fcb0a40b3c",
+    "spec/fixtures/modules/demo3/manifests/init.pp": "0a9cf6a8d6fefef9ab8797cdd78e0b9f",
+    "spec/fixtures/modules/demo3/templates/hostgroups.cfg.erb": "5c44ae094f4c401c5a91e98f09c65d65",
+    "spec/fixtures/modules/issue1/manifests/init.pp": "7552465a46e18be5738b94632373cc72",
+    "spec/fixtures/modules/issue1/templates/refers_to_scope.erb": "67046031e74f04985a15911d0554ba2b",
+    "spec/fixtures/modules/template_body/templates/test1.erb": "9f5a4e389b94ff84426684d87954d47a",
+    "spec/functions/template_body_spec.rb": "db5d4cb982f03c6c3cf5cecf712fcdf8",
+    "spec/spec_helper.rb": "0db89c9a486df193c0e40095422e19dc",
+    "spec/spec_helper_system.rb": "531394a55dde543ab804c092cb8d00c0",
+    "spec/system/basic_spec.rb": "aaa9c0f55cab9acade54d4394fa7a655",
+    "spec/unit/type/datacat_collector_spec.rb": "d1fd62eb48d4cd93965d8fe6bb1c7dd5"
+  }
+}

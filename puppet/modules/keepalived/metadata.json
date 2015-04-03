@@ -1,0 +1,75 @@
+{
+  "name": "arioch-keepalived",
+  "version": "1.1.1",
+  "author": "Tom De Vylder",
+  "summary": "Keepalived module",
+  "license": "Apache License, Version 2.0",
+  "source": "https://github.com/arioch/puppet-keepalived",
+  "project_page": "http://arioch.github.io/puppet-keepalived/",
+  "issues_url": "https://github.com/arioch/puppet-keepalived/issues",
+  "description": "Keepalived vrrp and lvs failover module",
+  "tags": [
+    "keepalived",
+    "vrrp",
+    "lvs",
+    "failover",
+    "loadbalancing",
+    "stonith",
+    "ipvs"
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "6.0",
+        "6.1",
+        "6.2",
+        "6.3",
+        "6.4",
+        "6.5",
+        "6.6",
+        "6.6",
+        "6.7",
+        "6.9",
+        "7.0",
+        "7.1",
+        "7.2",
+        "7.3",
+        "7.4",
+        "7.5"
+      ]
+    },
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "6.0",
+        "6.1",
+        "6.2",
+        "6.3",
+        "6.4",
+        "6.5"
+      ]
+    },
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "6.0",
+        "6.1",
+        "6.2",
+        "6.3",
+        "6.4",
+        "6.5"
+      ]
+    }
+  ],
+  "requirements": [
+    {
+      "name": "pe",
+      "version_requirement": "3.x"
+    }
+  ],
+  "dependencies": [
+    {"name":"puppetlabs/stdlib","version_requirement":">= 4.1.0"},
+    {"name":"puppetlabs/concat","version_requirement":">= 1.0.2"}
+  ]
+}
