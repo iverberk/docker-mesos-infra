@@ -9,8 +9,8 @@
       ],
       "parameters": [
         { "key": "env", "value": "SERVICE_NAME=app" },
-        { "key": "env", "value": "SERVICE_TAGS=production" },
-        { "key": "env", "value": "APP_ENV=production" },
+        { "key": "env", "value": "SERVICE_TAGS={{APP_ENV}}" },
+        { "key": "env", "value": "APP_ENV={{APP_ENV}}" },
         { "key": "env", "value": "SERVICE_80_CHECK_HTTP=/signin" },
         { "key": "env", "value": "SERVICE_80_CHECK_INTERVAL=15s" },
         { "key": "cap-drop", "value": "ALL" }
@@ -29,10 +29,10 @@
       }
     ]
   },
-  "id": "/app-production",
+  "id": "/app-{{APP_ENV}}",
   "instances": 3,
   "cpus": 0.1,
   "mem": 64,
   "uris": [],
-  "constraints": [["environment", "CLUSTER", "production"]]
+  "constraints": [["environment", "CLUSTER", "{{APP_ENV}}"]]
 }
