@@ -8,15 +8,16 @@ class profile::mesos::slave (
   class { '::mesos::slave':
     env_var => {
       'MESOS_LOG_DIR' => '/var/log/mesos',
-    },
-  } ->
+    }
+  }
 
   file { '/etc/mesos-slave/containerizers':
-    ensure => present,
-    owner => root,
-    group => root,
-    mode => 0755,
+    ensure  => present,
+    owner   => root,
+    group   => root,
+    mode    => 0755,
     content => 'docker,mesos',
+    require => Package['mesos']
   } ->
 
   file { '/etc/mesos-slave/executor_registration_timeout':
