@@ -2,7 +2,7 @@
   "container": {
     "type": "DOCKER",
     "docker": {
-      "image": "192.168.33.19:5000/app:latest",
+      "image": "192.168.33.19:5000/app:{{APP_VERSION}}",
       "network": "BRIDGE",
       "portMappings": [
         { "containerPort": 8000, "hostPort": 0, "servicePort": 0, "protocol": "tcp" }
