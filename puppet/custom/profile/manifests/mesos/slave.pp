@@ -16,7 +16,7 @@ class profile::mesos::slave (
     owner => root,
     group => root,
     mode => 0755,
-    content => 'docker,mesos'
+    content => 'docker,mesos',
   } ->
 
   file { '/etc/mesos-slave/executor_registration_timeout':
@@ -24,7 +24,8 @@ class profile::mesos::slave (
     owner => root,
     group => root,
     mode => 0755,
-    content => '5mins'
+    content => '5mins',
+    notify => Service['mesos-slave']
   }
 
   if $nfs_server {
